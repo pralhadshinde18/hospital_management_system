@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy import Date
 from database import Base
 from sqlalchemy.orm import relationship
-from model.patient_hospital_link import patient_hospital_link
 
 
 class Patient(Base):
@@ -27,5 +26,5 @@ class Patient(Base):
     exam_procedure = Column(String(50))
     hospital_id = Column(Integer, ForeignKey('hospital.id'))
 
-    hospitals = relationship("Hospital",secondary=patient_hospital_link,back_populates="patients")
+    hospital = relationship("Hospital", back_populates="patients")
     patient_files = relationship("PatientFile", back_populates="patient")

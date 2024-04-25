@@ -1,7 +1,6 @@
 from sqlalchemy import Integer, Column, String, Float
 from database import Base
 from sqlalchemy.orm import relationship
-from model.patient_hospital_link import patient_hospital_link
 
 
 class Hospital(Base):
@@ -19,4 +18,4 @@ class Hospital(Base):
 
     technicians = relationship("Technician", back_populates="hospital")
     reporting_doctors = relationship("ReportingDoctor", back_populates="hospital")
-    patients = relationship("Patient", secondary=patient_hospital_link, back_populates="hospitals")
+    patients = relationship("Patient", back_populates="hospital")
